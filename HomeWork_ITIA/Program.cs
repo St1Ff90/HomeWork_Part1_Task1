@@ -1,8 +1,8 @@
 ﻿namespace HomeWork_ITIA
 {
-    internal class Program
+    public class Program
     {
-        static string Convert(string input, int from, int to)
+        public static string Convert(string input, int from, int to)
         {
             if (string.IsNullOrEmpty(input) || from < 2 || from > 16 || to < 2 || to > 16)
             {
@@ -21,7 +21,7 @@
 
                 if (decimalValue < 0)
                 {
-                    throw new ArgumentException("Wrong input string!");
+                    throw new ArgumentException("Wrong arguments!");
                 }
                 else
                 {
