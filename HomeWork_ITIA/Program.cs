@@ -8,16 +8,14 @@
             {
                 throw new ArgumentException("Wrong arguments!");
             }
-            string result = "";
+            string result = string.Empty;
             char[] chars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
             char[] currentCharsArr = chars[0..from];
             int decimalConvertationResult = 0;
-            char[] inputArray = input.ToCharArray();
-            Array.Reverse(inputArray);
 
-            for (int i = 0; i < inputArray.Length; i++)
+            for (int i = input.Length - 1; i >= 0; i--)
             {
-                int decimalValue = Array.IndexOf(currentCharsArr, inputArray[i]);
+                int decimalValue = Array.IndexOf(currentCharsArr, input[i]);
 
                 if (decimalValue < 0)
                 {
@@ -25,7 +23,7 @@
                 }
                 else
                 {
-                    decimalConvertationResult += decimalValue * (int)Math.Pow(from, i);
+                    decimalConvertationResult += decimalValue * (int)Math.Pow(from, input.Length - 1 - i);
                 }
             }
 
