@@ -1,4 +1,4 @@
-using HomeWork_ITIA;
+using HomeWork_1_1;
 
 namespace Tests
 {
@@ -13,7 +13,7 @@ namespace Tests
             int convertTo, 
             string outputStr)
         {
-            string expeectedResult = HomeWork_ITIA.Program.Convert(inputStr, convertFrom, convertTo);
+            string expeectedResult = Class.Convert(inputStr, convertFrom, convertTo);
 
             Assert.AreEqual(outputStr, expeectedResult);
         }
@@ -33,7 +33,7 @@ namespace Tests
         {
             try
             {
-                HomeWork_ITIA.Program.Convert(inputStr, convertFrom, convertTo);
+                Class.Convert(inputStr, convertFrom, convertTo);
             }
             catch (ArgumentException ex)
             {
