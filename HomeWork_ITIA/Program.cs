@@ -1,4 +1,6 @@
-﻿namespace HomeWork_ITIA
+﻿using System.Text;
+
+namespace HomeWork_ITIA
 {
     public class Program
     {
@@ -8,8 +10,9 @@
             {
                 throw new ArgumentException("Wrong arguments!");
             }
-            string result = string.Empty;
-            char[] chars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+
+            StringBuilder result = new StringBuilder();
+            char[] chars = "0123456789ABCDEF".ToCharArray();
             char[] currentCharsArr = chars[0..from];
             int decimalConvertationResult = 0;
 
@@ -17,28 +20,28 @@
             {
                 int decimalValue = Array.IndexOf(currentCharsArr, input[i]);
 
-                if (decimalValue < 0)
+                if (decimalValue >= 0)
                 {
-                    throw new ArgumentException("Wrong arguments!");
+                    decimalConvertationResult += decimalValue * (int)Math.Pow(from, input.Length - 1 - i); 
                 }
                 else
                 {
-                    decimalConvertationResult += decimalValue * (int)Math.Pow(from, input.Length - 1 - i);
+                    throw new ArgumentException("Wrong arguments!");
                 }
             }
 
             if (decimalConvertationResult == 0)
             {
-                return "0";
+                return 0.ToString();
             }
 
             while (decimalConvertationResult % to > 0 || decimalConvertationResult / to > 0)
             {
-                result = chars[decimalConvertationResult % to].ToString() + result;
+                result.Insert(0, chars[decimalConvertationResult % to].ToString());
                 decimalConvertationResult /= to;
             }
 
-            return result;
+            return result.ToString();
         }
 
         static void Main(string[] args)
