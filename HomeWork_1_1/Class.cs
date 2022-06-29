@@ -6,12 +6,19 @@ namespace HomeWork_1_1
     {
         public static string Convert(string input, int from, int to)
         {
-            if (string.IsNullOrEmpty(input) || from < 2 || from > 16 || to < 2 || to > 16)
+            const int minSys = 2;
+            const int maxSys = 16;
+
+            if (string.IsNullOrEmpty(input) || from < minSys || from > maxSys || to < minSys || to > maxSys)
             {
                 throw new ArgumentException("Wrong arguments!");
             }
 
-            StringBuilder result = new StringBuilder();
+            if (input == 0.ToString())
+            {
+                return 0.ToString();
+            }
+
             char[] chars = "0123456789ABCDEF".ToCharArray();
             char[] currentCharsArr = chars[0..from];
             int decimalConvertationResult = 0;
@@ -30,10 +37,7 @@ namespace HomeWork_1_1
                 }
             }
 
-            if (decimalConvertationResult == 0)
-            {
-                return 0.ToString();
-            }
+            StringBuilder result = new StringBuilder();
 
             while (decimalConvertationResult % to > 0 || decimalConvertationResult / to > 0)
             {
